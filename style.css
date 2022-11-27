@@ -45,9 +45,11 @@ h1{
 
 
 .readStatus {
+    /* button to toggle read status */
     border-radius: 12px;
     font-size: 12pt;
     padding: 8px;
+    background-color: lightgrey;
     
 }
 
@@ -129,7 +131,7 @@ thead {
 }
 
 tr {
-    border-bottom: 1px solid rgba(0,0,0,.3);
+    /* border-bottom: 1px solid rgba(0,0,0,.3); */
 }
 
 tr.alt {
@@ -144,6 +146,7 @@ tr.alt {
     font-size: 18pt;
     border-radius: 12px;
     padding: 10px;
+    background-color: lightgrey;
 }
 
     
