@@ -5,3 +5,148 @@ html {
 *, *::before, *::after {
     box-sizing: inherit;
 }
+
+* {
+    font-family: 'Arial';
+}
+
+body: {
+        background-color: #ede9fe;
+}
+
+.container {
+
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: #faf5ff; */
+}
+
+h1{
+    align-self: start;
+    font-size: 30pt;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex-gap: 10px;     
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    border-radius: 20px;
+    padding: 20px;
+    
+
+}
+
+
+
+
+.readStatus {
+    border-radius: 12px;
+    font-size: 12pt;
+    padding: 8px;
+    
+}
+
+
+caption {
+    padding-left: 10px;
+ 
+ 
+}
+
+caption h2 {
+    color: rgba(0,0,0,.8);
+    font-size: 20pt;
+}
+
+th {
+    font-size: 16pt;
+}
+
+caption {
+    /* min-width: 200px; */
+    text-align: left;
+}
+
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.title {
+    width: 40%;
+}
+
+.author {
+    width: 20%;
+    size: 10pt;
+}
+
+.pages {
+    width: 10%;
+}
+
+.status {
+    width: 10%;
+}
+
+th,td {
+    padding: 15px;
+}
+
+tr.last {
+    border: none;
+}
+
+td {
+    font-size: 14pt;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+
+}
+
+table {
+    width: 39vw;
+    border-collapse: collapse;
+    border: 1px solid rgba(0,0,0,.8);
+ 
+}
+
+thead {
+    background-color: rgba(0,0,0,.8);
+    color: white;
+}
+
+tr {
+    border-bottom: 1px solid rgba(0,0,0,.3);
+}
+
+tr.alt {
+    background-color: rgba(0,0,0,.2);
+}
+
+
+.main-btn {
+    margin-top: 20px;
+    align-self: end;
+    width: 200px;
+    font-size: 18pt;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+    
+
+
+
