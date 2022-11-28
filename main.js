@@ -24,6 +24,7 @@ Book.prototype.toggleReadStatus = function () {
     this.isRead = true;
     return "Complete";
   }
+  // https://www.w3schools.com/howto/howto_css_switch.asp
 };
 
 function toggleStatus(e) {
@@ -71,6 +72,10 @@ function addBookDataToRow(row, book) {
   });
 }
 
+function addNewBook(e) {
+  console.log(e.target);
+}
+
 // some test books
 let book01 = new Book(
   (author = "Donella Meadows"),
@@ -106,6 +111,9 @@ addBookToLibrary(book04);
 
 let bookList = document.getElementById("book-list");
 let newRow;
+let mainButton = document.getElementById("main-btn");
+mainButton.addEventListener("click", addNewBook);
+
 myLibrary.forEach((item) => {
   newRow = document.createElement("tr");
   console.log(newRow);
@@ -116,3 +124,18 @@ myLibrary.forEach((item) => {
   newRow.id = myLibrary.indexOf(item);
   bookList.appendChild(newRow);
 });
+
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+mainButton.onclick = function () {
+  modal.style.display = "block";
+};
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
