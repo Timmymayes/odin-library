@@ -44,6 +44,7 @@ function addBookDataToRow(row, book) {
   Object.entries(book).forEach((entry) => {
     let td = document.createElement("td");
     const [key, value] = entry;
+    console.log(key, ":", value);
     let classToAdd = key;
     if (key === "isRead") {
       let readStatus;
@@ -54,7 +55,6 @@ function addBookDataToRow(row, book) {
       } else {
         readStatus = "Not Read";
       }
-      console.log(typeof readStatus);
       btn.classList.add("readStatus");
       btn.appendChild(document.createTextNode(readStatus));
       // Commented out for now
@@ -68,14 +68,28 @@ function addBookDataToRow(row, book) {
     if (key === "pages") {
       td.classList.add("center");
     }
-    console.log(td);
     row.appendChild(td);
   });
 }
 
-function addNewBook(e) {
-  console.log(e.target);
+function createTableAndAddBook(book) {
+  newRow = document.createElement("tr");
+  addBookDataToRow(newRow, book);
+  if (rowCounter % 2 != 0) {
+    newRow.classList.add("alt");
+  }
+  newRow.id = rowCounter;
+  rowCounter++;
+  bookList.appendChild(newRow);
+  modal.style.display = "none";
+  form.reset();
 }
+
+// function addNewBook(e) {
+//   console.log(e);
+//   e.preventDefault();
+//   const data = new FormData(form);
+// }
 
 // some test books
 let book01 = new Book(
@@ -111,19 +125,51 @@ addBookToLibrary(book03);
 addBookToLibrary(book04);
 
 let bookList = document.getElementById("book-list");
+let rowCounter = 0;
 let newRow;
 let mainButton = document.getElementById("main-btn");
-mainButton.addEventListener("click", addNewBook);
+let form = document.getElementById("form");
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  let result = [];
+  const data = new FormData(form);
+  /*
+
+A long ass
+
+comment
+oh yeah
+*/
+  for (const [key, value] of data) {
+    result.push(value);
+    console.log(result);
+  }
+  if (result.length < 4) {
+    result.push(false);
+    console.log(result);
+  } else {
+    result[3] = true;
+  }
+  let bookToAdd = new Book(
+    (title = result[1]),
+    (author = result[0]),
+    (pages = Number(result[2])),
+    (isRead = result[3])
+  );
+  console.log(bookToAdd);
+  addBookToLibrary(bookToAdd);
+  createTableAndAddBook(bookToAdd);
+});
 
 myLibrary.forEach((item) => {
   newRow = document.createElement("tr");
-  console.log(newRow);
   addBookDataToRow(newRow, item);
-  if (myLibrary.indexOf(item) % 2 != 0) {
+  if (rowCounter % 2 != 0) {
     newRow.classList.add("alt");
   }
-  newRow.id = myLibrary.indexOf(item);
+  newRow.id = rowCounter;
   bookList.appendChild(newRow);
+  rowCounter++;
 });
 
 var modal = document.getElementById("myModal");

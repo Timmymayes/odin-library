@@ -186,7 +186,7 @@ tr.alt {
     cursor: pointer;
 }
 
-.form {
+form {
     display: flex;
     flex-flow: column;
     align-items: center;

@@ -54,6 +54,8 @@
 		<div class="modal-form">
 		    <span class="close">&times;</span>
 
+
+		    <form id="form">
 		    <div class="form">
 			<h2>Add a New Book</h2>			
 			<div class="row">
@@ -65,15 +67,16 @@
 			    <input id="author" name="book_author" type="text" value=""/>
 			</div>
 			<div class="row">
-			    <label for="">Pages</label>
+			    <label for="pages">Pages</label>
 			    <input id="pages" name="number_of_pages" type="text" value=""/>
 			</div>
 			<div class="row">
 			    <label for="read-status">Completed?</label>
 			    <input id="read-status" class="justify-right" name="completion_status" type="checkbox" value=""/>
 			</div>
-			<button id="submit">Submit</button>
-		    </div>
+			<button type="submit" id="submit">Submit</button>			
+			</form>
+
 		</div>
 	    </div>
 	</div>
