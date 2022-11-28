@@ -16,7 +16,7 @@
 		    </caption>
 		    <thead>
 			<tr class="table-header">
-			    <th class="left" scope="col">Name</th>
+			    <th class="left" scope="col">Title</th>
 			    <th class="left" scope="col">Author</th>
 			    <th class="center" scope="col">Pages</th>
 			    <th class="center" scope="col">Status</th>
@@ -53,7 +53,27 @@
 	    <div id ="myModal" class="modal">
 		<div class="modal-form">
 		    <span class="close">&times;</span>
-		    <h2>Add a New Book</h2>
+
+		    <div class="form">
+			<h2>Add a New Book</h2>			
+			<div class="row">
+			    <label for="title">Title</label>
+			    <input id="title" name="book_title" type="text" value=""/>
+			</div>
+			<div class="row">
+			    <label for="author">Author</label>
+			    <input id="author" name="book_author" type="text" value=""/>
+			</div>
+			<div class="row">
+			    <label for="">Pages</label>
+			    <input id="pages" name="number_of_pages" type="text" value=""/>
+			</div>
+			<div class="row">
+			    <label for="read-status">Completed?</label>
+			    <input id="read-status" class="justify-right" name="completion_status" type="checkbox" value=""/>
+			</div>
+			<button id="submit">Submit</button>
+		    </div>
 		</div>
 	    </div>
 	</div>

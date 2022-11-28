@@ -10,8 +10,9 @@ function Book(author, title, pages, readStatus) {
 -read status
 -cover image
   */
-  this.author = author;
+
   this.title = title;
+  this.author = author;
   this.pages = pages;
   this.isRead = readStatus;
 }
