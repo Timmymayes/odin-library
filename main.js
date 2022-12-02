@@ -6,16 +6,6 @@ let mainButton = document.getElementById("main-btn");
 let form = document.getElementById("form");
 
 function Book(author, title, pages, readStatus) {
-  // Constructor
-  /*
-    Book Details:
--Author
--Title
--number of pages
--read status
--cover image
-  */
-
   this.title = title;
   this.author = author;
   this.pages = pages;
