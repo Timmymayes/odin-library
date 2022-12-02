@@ -35,6 +35,7 @@ function addBookToLibrary(book) {
 }
 
 function addBookDataToRow(row, book) {
+  //add book
   Object.entries(book).forEach((entry) => {
     let td = document.createElement("td");
     const [key, value] = entry;
@@ -44,7 +45,8 @@ function addBookDataToRow(row, book) {
     } else {
       td.appendChild(document.createTextNode(value));
     }
-    checkIfNeedsCenteredAndCenter(key);
+
+    checkIfNeedsCenteredAndCenter(td, key);
     row.appendChild(td);
   });
 }
@@ -53,9 +55,28 @@ function createStatusButton(buttonState) {
   let readStatus;
   let btn = document.createElement("button");
   btn.classList.add("readStatus");
-  btn.appendChild(document.createTextNode(createButtonText(buttonState)));
+  btn.appendChild(document.createTextNode(createStatusButtonText(buttonState)));
   btn.addEventListener("click", toggleStatus);
   return btn;
+}
+
+function createDeleteButton(rowID) {
+  let btn = document.createElement("button");
+  btn.classList.add("delete-button");
+  btn.id = rowID;
+  btn.appendChild(document.createTextNode("Delete"));
+  btn.addEventListener("click", deleteBook);
+  return btn;
+}
+
+function deleteBook(e) {
+  console.log(e.target.id);
+  let targetRowID = "Row_" + e.target.id;
+  let targetRow = document.getElementById(targetRowID);
+  targetRow.remove();
+  styleRows();
+  // delete book from library
+  myLibrary.splice(e.target.id, 1);
 }
 
 function isButton(propertyName) {
@@ -73,7 +94,7 @@ function determineClassToAdd(propertyName) {
   }
 }
 
-function createButtonText(propertyValue) {
+function createStatusButtonText(propertyValue) {
   if (propertyValue === true) {
     return "Complete";
   } else {
@@ -82,7 +103,7 @@ function createButtonText(propertyValue) {
 }
 
 function checkIfNeedsCenteredAndCenter(tableData, propertyName) {
-  if (propertyName === "page" || propertyName === "isRead") {
+  if (propertyName === "pages" || propertyName === "isRead") {
     tableData.classList.add("center");
   }
 }
@@ -90,18 +111,34 @@ function checkIfNeedsCenteredAndCenter(tableData, propertyName) {
 function createTableAndAddBook(book) {
   newRow = document.createElement("tr");
   addBookDataToRow(newRow, book);
-  checkIfRowNeedsAltStyleAndAddClass(newRow, rowCounter);
+  let td = document.createElement("td");
+  td.classList.add("center");
+  td.appendChild(createDeleteButton(rowCounter));
+  newRow.appendChild(td);
   newRow.id = "Row_" + rowCounter;
   rowCounter++;
   bookList.appendChild(newRow);
   modal.style.display = "none";
   form.reset();
+  styleRows();
 }
 
-function checkIfRowNeedsAltStyleAndAddClass(row, rowNumber) {
-  if (rowNumber % 2 != 0) {
-    row.classList.add("alt");
-  }
+function styleRows() {
+  let rowList = document.getElementById("book-list").childNodes;
+  let rowCounter = 0;
+  rowList.forEach((row) => {
+    console.log(row.id);
+
+    if (row.id) {
+      row.classList.remove("alt");
+      if (row.id.substring(0, 3) === "Row") {
+        if (rowCounter % 2 != 0) {
+          row.classList.add("alt");
+        }
+      }
+      rowCounter++;
+    }
+  });
 }
 
 //take form data by short circuiting the default action
@@ -114,7 +151,6 @@ form.addEventListener("submit", function (e) {
 
   for (const [key, value] of submittedData) {
     bookData.push(value);
-    bookData;
   }
   //if the checkbox for read/not read passes a string
   //  if true and  it simply leaves the data off if not
@@ -153,12 +189,12 @@ window.onclick = function (event) {
 };
 
 // some test books
-let book01 = new Book(
-  (author = "Donella Meadows"),
-  (title = "Systems Thinking"),
-  (pages = 500),
-  (isRead = false)
-);
+// let book01 = new Book(
+//   (author = "Donella Meadows"),
+//   (title = "Systems Thinking"),
+//   (pages = 500),
+//   (isRead = false)
+// );
 
 let book02 = new Book(
   (author = "David Goggins"),
@@ -182,7 +218,7 @@ let book04 = new Book(
 
 // add test books to library and load them on page
 
-addBookToLibrary(book01);
+//addBookToLibrary(book01);
 addBookToLibrary(book02);
 addBookToLibrary(book03);
 addBookToLibrary(book04);
@@ -190,3 +226,4 @@ addBookToLibrary(book04);
 myLibrary.forEach((item) => {
   createTableAndAddBook(item);
 });
+styleRows();

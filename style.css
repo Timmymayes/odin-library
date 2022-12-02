@@ -46,7 +46,7 @@ button {
 }
 
 
-.readStatus {
+.readStatus, .delete-button {
     /* button to toggle read status */
     border-radius: 12px;
     font-size: 12pt;
@@ -148,6 +148,12 @@ tr.alt {
     border-radius: 12px;
     padding: 10px;
     background-color: lightgrey;
+}
+
+.delete-button {
+    background-color: rgba(250,10,10,.8);
+    color: white;
+    font-weight: 800;
 }
 
 .modal {
