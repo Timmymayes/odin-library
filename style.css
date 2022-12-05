@@ -174,8 +174,9 @@ tr.alt {
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
+    padding-top: 15px;
     border: 1px solid #888;
-    width: 30%;
+    width: 12%
     
 }
 
@@ -191,33 +192,37 @@ tr.alt {
     text-decoration: none;
     cursor: pointer;
 }
-
-form {
+.form-header {
+    display:flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: -20px;
+}
+.form {
     display: flex;
     flex-flow: column;
     align-items: center;
-    gap: 20px;
+    justify-content: space-between;
+    gap: 8px;
 }
+
 .row {
     display: flex;
-    width: 80%;
-    justify-content: baseline;
-    /* border: 1px dashed green; */
-    gap: 10px;
+    min-height: 25px;
+    width: 100%;
+    justify-content: space-between;
+    gap: 100px;
 }
 
 label {
-    flex: 1;
     font-size: 14pt;
     font-weight: 800;
 }
 input {
-    flex: 1;
 }
 
 #read-status {
-    flex: 1;
-    align-self: flex-end;
+    justify-self: flex-end;
 
 
 

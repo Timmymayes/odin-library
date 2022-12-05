@@ -14,8 +14,10 @@ function Book(author, title, pages, readStatus) {
 
 function toggleStatus(e) {
   //Toggle button status by calling prototype function
+  console.log(e.target);
   let curBook = myLibrary[e.path[2].id];
-  e.target.childNodes[0].nodeValue = curBook.toggleReadStatus();
+  // need to figure out the toggle status issue due to how i'm deleting rows
+  //  e.target.childNodes[0].nodeValue = curBook.toggleReadStatus();le
 }
 
 Book.prototype.toggleReadStatus = function () {
